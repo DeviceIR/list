@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { List } from "@/components/ui/ItemGroup";
+import { List } from "@/components/ui/List";
 import AnimatedProgress from "@/components/ui/progress-animated";
 import Navbar from "@/components/Navbar";
 

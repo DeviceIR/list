@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ProgressProvider } from "@/context/ProgressContext";
 import AnimatedProgressWrapper from "@/components/AnimatedProgressWrapper";
+import { ListProvider } from "@/context/ListContext";
 
 export const metadata: Metadata = {
   title: "SavvyTask",
@@ -27,7 +28,7 @@ export default function RootLayout({
           >
             {/* ✅ progress animation handled inside wrapper */}
             <AnimatedProgressWrapper />
-            {children}
+            <ListProvider>{children}</ListProvider>
           </ThemeProvider>
         </ProgressProvider>
       </body>
