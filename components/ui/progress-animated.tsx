@@ -43,7 +43,6 @@ const AnimatedProgress = React.forwardRef<
     requestAnimationFrame(step);
   };
 
-  // expose start() to parent via ref
   React.useImperativeHandle(ref, () => ({
     start,
   }));

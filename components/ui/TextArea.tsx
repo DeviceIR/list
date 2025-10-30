@@ -22,7 +22,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           rows={rows}
           {...props}
-          placeholder={label} // hidden by label
+          placeholder={label}
           className={cn(
             "peer w-full rounded-md border border-gray-400 px-3 pt-6 pb-3 text-sm placeholder-transparent focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed",
             className
@@ -42,10 +42,9 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           }}
         />
 
-        {/* Floating label */}
         <motion.label
           animate={{
-            y: isFocused || hasValue ? -8 : 8, // up when focused/has value, down otherwise
+            y: isFocused || hasValue ? -8 : 8,
             opacity: isFocused || hasValue ? 0.6 : 1,
             scale: isFocused || hasValue ? 0.85 : 1,
           }}

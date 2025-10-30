@@ -21,7 +21,7 @@ const ListContext = createContext<ListContextType | undefined>(undefined);
 export const ListProvider = ({ children }: { children: React.ReactNode }) => {
   const [items, setItems] = useState<Item[]>([]);
 
-  // Load items from localStorage on mount
+  // get List from localstorage
   useEffect(() => {
     const stored = localStorage.getItem("myListItems");
     if (stored) {
@@ -31,7 +31,7 @@ export const ListProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, []);
 
-  // Save items to localStorage whenever they change
+  // save List to localstorage on everycahnge
   useEffect(() => {
     localStorage.setItem("myListItems", JSON.stringify(items));
   }, [items]);

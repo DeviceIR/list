@@ -26,8 +26,9 @@ export default function RootLayout({
             enableSystem={false}
             disableTransitionOnChange
           >
-            {/* ✅ progress animation handled inside wrapper */}
+            {/* fake load bar on top */}
             <AnimatedProgressWrapper />
+            {/* list provider for all components */}
             <ListProvider>{children}</ListProvider>
           </ThemeProvider>
         </ProgressProvider>

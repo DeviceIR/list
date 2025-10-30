@@ -3,13 +3,11 @@
 import React, { createContext, useContext, useRef, RefObject } from "react";
 import { AnimatedProgressHandle } from "@/components/ui/progress-animated";
 
-// Ref type: can be null initially (as required by React refs)
 type ProgressContextType = RefObject<AnimatedProgressHandle | null>;
 
-// Create the context
 const ProgressContext = createContext<ProgressContextType | null>(null);
 
-// Provider component
+// provider
 export const ProgressProvider = ({
   children,
 }: {
@@ -24,7 +22,6 @@ export const ProgressProvider = ({
   );
 };
 
-// Hook for consuming the context
 export const useProgress = (): RefObject<AnimatedProgressHandle | null> => {
   const context = useContext(ProgressContext);
   if (!context) {

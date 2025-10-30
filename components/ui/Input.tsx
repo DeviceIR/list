@@ -40,7 +40,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           }}
         />
 
-        {/* Floating label */}
         <motion.label
           animate={{
             y: isFocused || hasValue ? -18 : 4, // stays up if focused or has value

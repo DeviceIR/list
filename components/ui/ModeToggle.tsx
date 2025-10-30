@@ -17,7 +17,7 @@ export function ModeToggle() {
   const handleToggle = async () => {
     progressRef.current?.start();
 
-    // wait the duration of the animation (e.g., 1.5s)
+    // duration of the animation = 1.5s
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     setTheme(theme === "light" ? "dark" : "light");

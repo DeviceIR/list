@@ -33,7 +33,7 @@ export default function ModalForm({ mode, itemId, onClose }: ModalFormProps) {
         modalRef.current &&
         !modalRef.current.contains(event.target as Node)
       ) {
-        onClose(); // same as clicking Cancel
+        onClose(); // like clicking Cancel ==> same functionality
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
