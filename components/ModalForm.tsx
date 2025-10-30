@@ -6,6 +6,7 @@ import { useList } from "@/context/ListContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/Input";
 import { TextArea } from "./ui/TextArea";
+import { motion } from "motion/react";
 
 interface ModalFormProps {
   mode: "create" | "edit";
@@ -58,29 +59,52 @@ export default function ModalForm({ mode, itemId, onClose }: ModalFormProps) {
 
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
           <div>
-            {/* <label className="block text-sm font-medium mb-1 text-foreground tracking-wider">
-              Title
-            </label> */}
             <Input
-              {...form.register("title", { required: true })}
+              {...form.register("title", {
+                required: "Title cannot be empty",
+                maxLength: { value: 50, message: "Title too long" },
+              })}
               placeholder="Title"
             />
-            {form.formState.errors.title && (
-              <p className="text-red-500 text-xs mt-1">Title is required</p>
-            )}
+            <motion.div
+              animate={{
+                height: form.formState.errors.title ? "2rem" : 0,
+                opacity: form.formState.errors.title ? 1 : 0,
+              }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <p className="text-red-500 text-xs mt-1">
+                {form.formState.errors.title?.message}
+              </p>
+            </motion.div>
           </div>
 
           <div>
-            {/* <label className="block text-sm font-medium mb-1 text-foreground tracking-wider">
-              Subtitle
-            </label> */}
             <TextArea
-              label="Subtitle" // ✅ required for floating label
-              {...form.register("subTitle", { required: true })}
-              placeholder="Enter subtitle" // optional, mainly for accessibility
+              label="Subtitle"
+              {...form.register("subTitle", {
+                required: "Subtitle cannot be empty",
+                maxLength: {
+                  value: 200,
+                  message: "Max 200 characters allowed",
+                },
+              })}
+              placeholder="Enter subtitle"
             />
             {form.formState.errors.subTitle && (
-              <p className="text-red-500 text-xs mt-1">Subtitle is required</p>
+              <motion.div
+                animate={{
+                  height: form.formState.errors.subTitle ? "2rem" : 0,
+                  opacity: form.formState.errors.subTitle ? 1 : 0,
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <p className="text-red-500 text-xs mt-1">
+                  {form.formState.errors.subTitle?.message}
+                </p>
+              </motion.div>
             )}
           </div>
 
