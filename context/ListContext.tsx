@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 export interface Item {
   id: string;
@@ -20,6 +20,21 @@ const ListContext = createContext<ListContextType | undefined>(undefined);
 
 export const ListProvider = ({ children }: { children: React.ReactNode }) => {
   const [items, setItems] = useState<Item[]>([]);
+
+  // Load items from localStorage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem("myListItems");
+    if (stored) {
+      setTimeout(() => {
+        setItems(JSON.parse(stored));
+      });
+    }
+  }, []);
+
+  // Save items to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("myListItems", JSON.stringify(items));
+  }, [items]);
 
   const addItem = (title: string, subTitle: string) => {
     const newItem: Item = {

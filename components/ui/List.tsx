@@ -83,10 +83,15 @@ export function List() {
                   </ItemDescription>
                   <p className="text-xs text-muted-foreground mt-2">
                     Created:{" "}
-                    {new Date(person.createdAt).toLocaleDateString("en-US", {
+                    {new Date(person.createdAt).toLocaleString("en-US", {
                       weekday: "short",
+                      year: "numeric",
                       month: "short",
                       day: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      second: "2-digit",
+                      hour12: false, // 24-hour format
                     })}
                   </p>
                 </ItemContent>
